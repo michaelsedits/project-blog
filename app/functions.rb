@@ -15,12 +15,16 @@ ActiveRecord::Schema.define do
       table.column :place_description, :text
       table.column :rdio, :string
       table.column :map, :string
-      table.column :date, :datetime
+      table.column :created_at
     end
   end
   
 end
 
-class Post
-  
+class Post < ActiveRecord::Base
+  belongs_to :user
+end
+
+class User < ActiveRecord::Base
+  belongs_to :post
 end
