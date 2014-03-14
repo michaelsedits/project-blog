@@ -1,4 +1,6 @@
 <% @albums.each do |album| %>
-	<a href="/album/<%= album.id %>"><div id="place_title"><%= album.place_title %></div></a>
-	<a href="/album/<%= album.id %>"><div id="album_cover"><img src="<%= album.album_cover %>"></div></a>
+	<div id="home_album"><a href="/album/<%= album.id %>"><div id="banner"><%= album.place_title %></div></a>
+	<a href="/album/<%= album.id %>"><img class="homepage" src="<%= album.album_cover %>"></a></div>
 <% end %>
+</div>
+<div id="find_more">

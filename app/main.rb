@@ -15,7 +15,7 @@ class Blog < Sinatra::Base
   end
   
   get "/" do
-    @albums = Post.all
+    @albums = Post.order("created_at DESC")
     erb :home
   end
   

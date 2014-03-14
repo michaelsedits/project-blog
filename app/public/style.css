@@ -1,0 +1,241 @@
+#button {
+  width: 67px;
+  height: 40px;
+  background-color: #813510;
+  moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border: 5px solid #813510;
+  padding: 5px;
+}
+
+h1 {
+	font-family: "bebas-neue";
+	font-size: 50px;
+	color: #A0A0A0;
+}
+
+h3 {
+	font-family: "bebas-neue";
+	font-size: 40px;
+	color: #813510;
+}
+
+h3 a:link {
+	font-family: "bebas-neue";
+	font-size: 40px;
+	color: #813510;
+}
+
+p a:link {
+	color: #A0A0A0;
+}
+
+p a:hover {
+	color: #813510;
+}
+
+
+h2 a:visited {
+	font-family: "bebas-neue";
+	font-size: 50px;
+	background-color: #3C3C3C;
+	color: #F0F0F0;
+	width: 90px;
+	text-align: center;
+}
+
+h3 {
+	font-family: "bebas-neue";
+	font-size: 40px;
+	color: #813510;
+}
+
+#credit {
+	display: inline-block;
+	text-align: center;
+	padding-top: 10px;
+	padding-left: 30px;
+	padding-bottom: 10px;
+	font-family: "proxima-nova";
+	position: relative;
+	bottom: 13px;
+}
+
+#date {
+	color: #A0A0A0;
+	text-align: center;
+	font-family: "proxima-nova";
+}
+
+#date_red {
+	color: #813510;
+	text-align: center;
+	font-family: "proxima-nova";
+}
+
+#album {
+	width: 475px;
+	float: left;
+	display: inline-block;
+}
+
+#home_album {
+	display: inline-block;
+}
+
+#home_album a:hover {
+	opacity: 0.9;
+}
+
+#place {
+	float: right;
+	display: inline-block;
+	width: 475px;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;	
+}
+  
+h1 {
+	display: block;
+	-webkit-margin-before: 0px;
+	-webkit-margin-after: 0px;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: none;	
+}
+
+a:active {
+	text-decoration: none;	
+}
+
+img.homepage {
+	width: 345px;
+}
+
+img.ocs {
+	display: inline-block;
+	padding-left: 20px;
+	padding-top: 10px;
+}
+
+#nav {
+	font-family: "adobe-caslon-pro";
+	font-size: 40px;
+	color: #F0F0F0;
+	display: inline-block;
+	font-weight: 100;
+}
+
+#nav a:link {
+	color: #3C3C3C;
+}
+
+#nav a:visited {
+	color: #3C3C3C;
+}
+
+#nav a:hover {
+	color: #813510;
+}
+
+header {
+	height: 140px;
+}
+
+#blog_title {
+	font-family: "bebas-neue";
+	font-size: 130px;
+	font-weight: 100;
+	display: inline-block;
+	padding-right: 10px;
+	padding-bottom: 5px;
+}
+
+#blog_title a:link {
+	color: #813510;
+}
+
+#blog_title a:visited {
+	color: #813510;
+}
+
+#blog_title a:hover {
+	opacity: 0.9;
+}
+
+
+footer {
+	clear: both;
+	background-color: #3C3C3C;
+	color: #F0F0F0;
+	font-family: "proxima-nova";
+	margin-top: 20px;
+}
+
+footer a:link {
+	color: #F0F0F0;
+}
+
+#found {
+	clear: both;
+}
+
+footer a:visited {
+	color: #F0F0F0;
+}
+
+p {
+	font-family: "proxima-nova";
+}
+
+#title {
+	font-family: "bebas-neue";
+	font-size: 40px;
+	color: #3C3C3C;
+}
+
+#admin_title {
+	font-family: "bebas-neue";
+	font-size: 20px;
+	color: #3C3C3C;
+}
+
+#banner {
+	font-family: "bebas-neue";
+	font-size: 30px;
+	padding: 5px;
+	text-align: center;
+	background-color: #3C3C3C;
+	color: #F0F0F0;
+	font-weight: 100;
+}
+
+#banner:hover {
+	font-family: "bebas-neue";
+	font-size: 30px;
+	padding: 5px;
+	text-align: center;
+	background-color: #813510;
+	color: #F0F0F0;
+	font-weight: 100;
+}
+
+#content {
+	width: 1050px;
+	position: relative;
+	margin: auto;
+}
+
+h3 {
+	font-weight: 100;
+}
