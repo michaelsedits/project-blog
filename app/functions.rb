@@ -13,11 +13,14 @@ ActiveRecord::Schema.define do
       table.column :album_review, :text
       table.column :place_title, :string
       table.column :place_description, :text
+      table.column :pinpoint_description, :text
       table.column :rdio, :string
-      table.column :map, :string
-      table.column :created_at
-      table.column :found, :boolean
       table.column :city, :string
+      table.column :hidden_place, :string
+      table.column :map, :string
+      table.column :pinpoint_map, :string
+      table.column :created_at, :datetime
+      table.column :found, :boolean
     end
   end
   

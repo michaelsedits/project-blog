@@ -54,6 +54,7 @@ class Blog < Sinatra::Base
   
   get "/album/:id" do
     @album = Post.find(params[:id])
+    @album_city = Post.where("found = ?", 'f').where("city = ?", @album.city)
     
     erb :album
   end
