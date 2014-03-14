@@ -17,6 +17,7 @@ ActiveRecord::Schema.define do
       table.column :map, :string
       table.column :created_at
       table.column :found, :boolean
+      table.column :city, :string
     end
   end
   

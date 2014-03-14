@@ -1,11 +1,7 @@
-#button {
-  width: 67px;
-  height: 40px;
-  background-color: #813510;
-  moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  border: 5px solid #813510;
-  padding: 5px;
+#desc {
+	font-family: "bebas-neue";
+	font-size: 30px;
+	color: #A0A0A0;
 }
 
 form {
@@ -16,6 +12,13 @@ h1 {
 	font-family: "bebas-neue";
 	font-size: 50px;
 	color: #A0A0A0;
+}
+
+h4 {
+	font-family: "adobe-caslon-pro";
+	font-size: 20px;
+	color: #813510;
+	text-align: center;
 }
 
 h3 {
@@ -34,10 +37,13 @@ p a:link {
 	color: #A0A0A0;
 }
 
+p a:visited {
+	color: #A0A0A0;
+}
+
 p a:hover {
 	color: #813510;
 }
-
 
 h2 a:visited {
 	font-family: "bebas-neue";
@@ -162,7 +168,6 @@ header {
 	font-weight: 100;
 	display: inline-block;
 	padding-right: 10px;
-	padding-bottom: 5px;
 }
 
 #blog_title a:link {
@@ -174,6 +179,25 @@ header {
 }
 
 #blog_title a:hover {
+	opacity: 0.9;
+}
+
+#blog_title_gray {
+	font-family: "bebas-neue";
+	font-size: 130px;
+	font-weight: 100;
+	display: inline-block;
+}
+
+#blog_title_gray a:link {
+	color: #A0A0A0;
+}
+
+#blog_title_gray a:visited {
+	color: #A0A0A0;
+}
+
+#blog_title_gray a:hover {
 	opacity: 0.9;
 }
 
@@ -233,6 +257,23 @@ p {
 	font-weight: 100;
 }
 
+#city_banner {
+	font-family: "bebas-neue";
+	font-size: 30px;
+	text-align: center;
+	background-color: #813510;
+	width: 500px;
+	margin: 15px auto 15px;
+	color: #F0F0F0;
+	font-weight: 100;
+	border-radius: 10px;
+	clear: both;
+}
+
+#city_banner:hover {
+	opacity: 0.9;
+}
+
 #found_banner {
 	font-family: "bebas-neue";
 	font-size: 30px;
@@ -243,6 +284,7 @@ p {
 	color: #F0F0F0;
 	font-weight: 100;
 	border-radius: 10px;
+	clear: both;
 }
 
 #found_banner:hover {
