@@ -8,6 +8,10 @@
   padding: 5px;
 }
 
+form {
+	font-family: "proxima-nova";
+}
+
 h1 {
 	font-family: "bebas-neue";
 	font-size: 50px;
@@ -173,7 +177,6 @@ header {
 	opacity: 0.9;
 }
 
-
 footer {
 	clear: both;
 	background-color: #3C3C3C;
@@ -228,6 +231,22 @@ p {
 	background-color: #813510;
 	color: #F0F0F0;
 	font-weight: 100;
+}
+
+#found_banner {
+	font-family: "bebas-neue";
+	font-size: 30px;
+	text-align: center;
+	background-color: #813510;
+	width: 345px;
+	margin: 15px auto 15px;
+	color: #F0F0F0;
+	font-weight: 100;
+	border-radius: 10px;
+}
+
+#found_banner:hover {
+	opacity: 0.9;
 }
 
 #content {

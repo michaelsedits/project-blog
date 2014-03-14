@@ -16,6 +16,7 @@ ActiveRecord::Schema.define do
       table.column :rdio, :string
       table.column :map, :string
       table.column :created_at
+      table.column :found, :boolean
     end
   end
   

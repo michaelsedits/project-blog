@@ -12,11 +12,31 @@ class Blog < Sinatra::Base
     def format_date(time)
      time.strftime("%B %d, %Y")
     end
+    
+    def h(text)
+      Rack::Utils.escape_html(text)
+    end
+    
+    def protected!
+      return if authorized?
+      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+      halt 401, "Not authorized\n"
+    end
+
+    def authorized?
+      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+    end
   end
   
   get "/" do
-    @albums = Post.order("created_at DESC")
+    @albums = Post.where("found = ?", 'f').order("created_at DESC").limit(9)
     erb :home
+  end
+  
+  get "/archive" do
+    @albums = Post.where("found = ?", 't').order("created_at DESC").limit(9)
+    erb :archive
   end
   
   get "/discover" do
@@ -34,6 +54,7 @@ class Blog < Sinatra::Base
   end
   
   get "/album/:id/edit" do
+    protected!
     @album = Post.find(params[:id])
     
     erb :edit
@@ -44,6 +65,7 @@ class Blog < Sinatra::Base
   end
   
   get "/admin" do
+    protected!
     erb :admin
   end
   
@@ -56,7 +78,7 @@ class Blog < Sinatra::Base
     rdio = params[:rdio]
     map = params[:map]
     
-    @album = Post.new({:album_title => album_title, :album_cover => album_cover, :album_review => album_review, :place_title => place_title, :place_description => place_description, :rdio => rdio, :map => map})
+    @album = Post.new({:album_title => album_title, :album_cover => album_cover, :album_review => album_review, :place_title => place_title, :place_description => place_description, :rdio => rdio, :map => map, :found => 0})
     @album.save
     
     redirect "/album/#{@album.id}"
@@ -76,6 +98,18 @@ class Blog < Sinatra::Base
     album.update_attributes({:album_title => album_title, :album_cover => album_cover, :album_review => album_review, :place_title => place_title, :place_description => place_description, :rdio => rdio, :map => map})
     
     redirect to("/album/#{params[:id]}")
+  end
+  
+  post "/album/:id/found" do
+    album = Post.find(params[:id])
+    
+    if params[:found] == "FOUND"
+      album.update_attributes({:found => 't'})
+      redirect to("/")
+    else
+      redirect to("/album/#{params[:id]}")
+    end
+    
   end
   
   post "/album/:id/delete" do
