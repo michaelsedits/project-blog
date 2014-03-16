@@ -21,6 +21,7 @@ ActiveRecord::Schema.define do
       table.column :pinpoint_map, :string
       table.column :created_at, :datetime
       table.column :found, :boolean
+      table.column :url, :string
     end
   end
   

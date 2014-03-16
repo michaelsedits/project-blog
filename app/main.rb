@@ -9,6 +9,14 @@ require_relative './functions'
 class Blog < Sinatra::Base
   
   helpers do
+    def title
+      if @title
+        "#{@title} | Unfound Sounds" 
+      else
+        "Unfound Sounds"
+      end
+    end
+    
     def format_date(time)
      time.strftime("%B %d, %Y")
     end
@@ -25,7 +33,7 @@ class Blog < Sinatra::Base
 
     def authorized?
       @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['booty', 'city']
     end
   end
   
@@ -35,44 +43,52 @@ class Blog < Sinatra::Base
   end
   
   get "/found" do
+    @title = "Found Sounds"
+    
     @albums = Post.where("found = ?", 't').order("created_at DESC").limit(9)
     erb :found
   end
   
   get "/city/:city" do
+    @city = (params[:city]).capitalize
+    @title = "Sounds in #{@city}"
+    
     @albums = Post.where("found = ?", 'f').where("city = ?", (params[:city]).capitalize).order("created_at DESC").limit(9)
     erb :home
   end
   
   get "/discover" do
+    @title = "Discover"
+    
     erb :discover
   end
 
   get "/donate" do
+    @title = "Donate"
+    
     erb :donate
   end
   
-  get "/album/:id" do
-    @album = Post.find(params[:id])
+  get "/album/:url" do
+    @album = Post.find_by_url(params[:url])
+    @title = "#{@album.album_title}"
     @album_city = Post.where("found = ?", 'f').where("city = ?", @album.city)
     
     erb :album
   end
   
-  get "/album/:id/edit" do
+  get "/album/:url/edit" do
     protected!
-    @album = Post.find(params[:id])
+    @album = Post.find_by_url(params[:url])
+    @title = "Edit #{@album.album_title}"
     
     erb :edit
   end
   
-  get "/album/:id/found" do
-    erb :found
-  end
-  
-  get "/admin" do
+  get "/add" do
     protected!
-    erb :admin
+    @title = "Add a new album"
+    erb :add
   end
   
   post "/album" do
@@ -88,13 +104,13 @@ class Blog < Sinatra::Base
     map = params[:map]
     pinpoint_map = params[:pinpoint_map]
     
-    @album = Post.new({:album_title => album_title, :album_cover => album_cover, :album_review => album_review, :place_title => place_title, :place_description => place_description, :pinpoint_description => pinpoint_description, :rdio => rdio, :city => city, :hidden_place => hidden_place, :map => map, :pinpoint_map => pinpoint_map, :found => 0})
+    @album = Post.new({:album_title => album_title, :album_cover => album_cover, :album_review => album_review, :place_title => place_title, :place_description => place_description, :pinpoint_description => pinpoint_description, :rdio => rdio, :city => city, :hidden_place => hidden_place, :map => map, :pinpoint_map => pinpoint_map, :found => 0, :url => "#{album_title.gsub(' ', '-').gsub(/[^\w-]/, '').downcase}"})
     @album.save
     
-    redirect "/album/#{@album.id}"
+    redirect "/album/#{@album.url}"
   end
   
-  post "/album/:id/edit" do
+  post "/album/:url/edit" do
     album_title = params[:album_title]
     album_cover = params[:album_cover]
     album_review = params[:album_review]
@@ -107,33 +123,33 @@ class Blog < Sinatra::Base
     map = params[:map]
     pinpoint_map = params[:pinpoint_map]
     
-    album = Post.find(params[:id])
+    album = Post.find_by_url(params[:url])
   
     album.update_attributes({:album_title => album_title, :album_cover => album_cover, :album_review => album_review, :place_title => place_title, :place_description => place_description, :pinpoint_description => pinpoint_description, :rdio => rdio, :city => city, :hidden_place => hidden_place, :map => map, :pinpoint_map => pinpoint_map})
     
-    redirect to("/album/#{params[:id]}")
+    redirect to("/album/#{params[:url]}")
   end
   
-  post "/album/:id/found" do
-    album = Post.find(params[:id])
+  post "/album/:url/found" do
+    album = Post.find_by_url(params[:url])
     
     if params[:found] == "FOUND"
       album.update_attributes({:found => 't'})
       redirect to("/")
     else
-      redirect to("/album/#{params[:id]}")
+      redirect to("/album/#{params[:url]}")
     end
     
   end
   
-  post "/album/:id/delete" do
-    album = Post.find(params[:id])
+  post "/album/:url/delete" do
+    album = Post.find_by_url(params[:url])
     
     if params[:delete] == "DELETE"
       album.destroy
       redirect to("/")
     else
-      redirect to("/album/#{params[:id]}")
+      redirect to("/album/#{params[:url]}")
     end
     
   end

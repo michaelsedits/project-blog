@@ -1,5 +1,5 @@
 <% @albums.each do |album| %>
-	<div id="home_album"><a href="/album/<%= album.id %>"><div id="banner"><%= album.place_title %></div></a>
-	<a href="/album/<%= album.id %>"><img class="homepage" src="<%= album.album_cover %>"></a></div>
+	<div id="home_album"><a href="/album/<%= album.url %>"><div class="banner"><%= album.place_title %></div>
+	<img class="homepage" src="<%= album.album_cover %>"></a></div>
 <% end %>
 <a href="/found"><div id="found_banner">SEE FOUND SOUNDS</div></a>

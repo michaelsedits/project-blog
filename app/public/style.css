@@ -1,38 +1,3 @@
-#desc {
-	font-family: "bebas-neue";
-	font-size: 30px;
-	color: #A0A0A0;
-}
-
-form {
-	font-family: "proxima-nova";
-}
-
-h1 {
-	font-family: "bebas-neue";
-	font-size: 50px;
-	color: #A0A0A0;
-}
-
-h4 {
-	font-family: "adobe-caslon-pro";
-	font-size: 20px;
-	color: #813510;
-	text-align: center;
-}
-
-h3 {
-	font-family: "bebas-neue";
-	font-size: 40px;
-	color: #813510;
-}
-
-h3 a:link {
-	font-family: "bebas-neue";
-	font-size: 40px;
-	color: #813510;
-}
-
 p a:link {
 	color: #A0A0A0;
 }
@@ -43,6 +8,18 @@ p a:visited {
 
 p a:hover {
 	color: #813510;
+}
+
+h1 {
+	font-family: "bebas-neue";
+	font-size: 50px;
+	color: #A0A0A0;
+	display: block;
+	-webkit-margin-before: 0px;
+	-webkit-margin-after: 0px;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: bold;
 }
 
 h2 a:visited {
@@ -60,6 +37,35 @@ h3 {
 	color: #813510;
 }
 
+h3 {
+	font-family: "bebas-neue";
+	font-size: 40px;
+	color: #813510;
+}
+
+h3 a:link {
+	font-family: "bebas-neue";
+	font-size: 40px;
+	color: #813510;
+}
+
+h4 {
+	font-family: "adobe-caslon-pro";
+	font-size: 20px;
+	color: #813510;
+	text-align: center;
+}
+
+#desc {
+	font-family: "bebas-neue";
+	font-size: 30px;
+	color: #A0A0A0;
+}
+
+form {
+	font-family: "proxima-nova";
+}
+
 #credit {
 	display: inline-block;
 	text-align: center;
@@ -69,6 +75,18 @@ h3 {
 	font-family: "proxima-nova";
 	position: relative;
 	bottom: 13px;
+}
+
+#credit a:link {
+	color: #F0F0F0;
+}
+
+#credit a:visited {
+	color: #F0F0F0;
+}
+
+#credit a:hover {
+	opacity: 0.9;
 }
 
 #date {
@@ -93,7 +111,11 @@ h3 {
 	display: inline-block;
 }
 
-#home_album a:hover {
+#home_album:hover div.banner {
+	background-color: #813510;
+}
+
+#home_album:hover img {
 	opacity: 0.9;
 }
 
@@ -109,15 +131,6 @@ a:link {
 
 a:visited {
 	text-decoration: none;	
-}
-  
-h1 {
-	display: block;
-	-webkit-margin-before: 0px;
-	-webkit-margin-after: 0px;
-	-webkit-margin-start: 0px;
-	-webkit-margin-end: 0px;
-	font-weight: bold;
 }
 
 a:hover {
@@ -136,6 +149,10 @@ img.ocs {
 	display: inline-block;
 	padding-left: 20px;
 	padding-top: 10px;
+}
+
+img.ocs:hover {
+	opacity: 0.9;
 }
 
 #nav {
@@ -237,22 +254,12 @@ p {
 	color: #3C3C3C;
 }
 
-#banner {
+div.banner {
 	font-family: "bebas-neue";
-	font-size: 30px;
+	font-size: 25px;
 	padding: 5px;
 	text-align: center;
 	background-color: #3C3C3C;
-	color: #F0F0F0;
-	font-weight: 100;
-}
-
-#banner:hover {
-	font-family: "bebas-neue";
-	font-size: 30px;
-	padding: 5px;
-	text-align: center;
-	background-color: #813510;
 	color: #F0F0F0;
 	font-weight: 100;
 }
@@ -295,6 +302,13 @@ p {
 	width: 1050px;
 	position: relative;
 	margin: auto;
+}
+
+div.more {
+	width: 1050px;
+	position: relative;
+	margin: auto;
+	display: inline-block;
 }
 
 h3 {

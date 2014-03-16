@@ -1,25 +1,28 @@
+<article>
 <% date = @album.created_at %>
-<div id="date"><p><%= @album.album_title %> was hidden on <%= format_date(date) %>,<br> <%= @album.place_title %> by Michael Todd.</div>
+	<div id="date"><p><%= @album.album_title %> was hidden on <%= format_date(date) %>,<br> <%= @album.place_title %> by Michael Todd.</div>
 <% if @album.found %>
-<p><div id="date_red"><strong>This album has been found.</strong></div></p>
+	<p><div id="date_red"><strong>This album has been found.</strong></div></p>
 <% else %>
-<p><div id="date_red"><strong>Find it first, and it's yours.</strong></div></p>
+	<p><div id="date_red"><strong>Find it first, and it's yours.</strong></div></p>
 <% end %>
 <div id="album">
-<div id="rdio"><%= @album.rdio %></div>
-<h4><em>A review of the album:</em></h4>
-<p><div id="album_review"><%= @album.album_review %></div></p>
+	<div id="rdio"><%= @album.rdio %></div>
+		<h4><em>A review of the album:</em></h4>
+			<p><div id="album_review"><%= @album.album_review %></div></p>
 </div>
 <div id="place">
 <% if @album.found %>
 <%= @album.pinpoint_map %>
 <h4><em>This album was hidden <%= @album.hidden_place %> in <%= @album.city %>:</em></h4>
-<p><%= @album.pinpoint_description %></p>
+	<p><%= @album.pinpoint_description %></p>
 </div>
 <% else %>
 <%= @album.map %>
 <h4><em>A hint about where to look:</em></h4>
-<p><%= @album.place_description %></p>
+	<p><%= @album.place_description %></p>
 </div>
 <% end %>
-<a href="/city/<%= @album.city.downcase %>"><div id="city_banner">FIND MORE UNFOUND SOUNDS IN <%= @album.city %></div>
+</article>
+<div class="more">
+<a href="/city/<%= @album.city.downcase %>"><div id="city_banner">FIND MORE UNFOUND SOUNDS IN <%= @album.city %></div></a></div>
