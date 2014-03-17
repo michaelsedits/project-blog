@@ -27,5 +27,7 @@
 </article>
 <div class="more">
 <% if @album_city != [] %>
-<a href="/city/<%= @album.city.downcase %>"><div id="city_banner">FIND MORE UNFOUND SOUNDS IN <%= @album.city.gsub("-", " ") %></div></a></div>
+<a href="/city/<%= @album.city %>"><div id="city_banner"><%= @album.city.gsub("-", " ") %>'s Unfound Sounds</div></a></div>
+<% else %>
+<a href="/found/<%= @album.city.downcase %>"><div id="city_banner"><%= @album.city.gsub('-', ' ') %>'s Found Sounds</a></div>
 <% end %>
