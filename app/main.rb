@@ -38,8 +38,17 @@ class Blog < Sinatra::Base
   end
   
   get "/" do
-    @albums = Post.where("found = ?", 'f').order("created_at DESC").limit(9)
-    erb :home
+    @unfound = Post.where("found = ?", 'f')
+    if @unfound != []
+      @albums = Post.where("found = ?", 'f').order("created_at DESC").limit(9)
+      @found = Post.where("found = ?", 't')
+      erb :home
+    else
+      @title = "Found Sounds"
+    
+      @albums = Post.where("found = ?", 't').order("created_at DESC").limit(9)
+      erb :found
+    end
   end
   
   get "/found" do
@@ -86,6 +95,7 @@ class Blog < Sinatra::Base
   end
   
   get "/add" do
+    protected!
     @title = "Add a new album"
     erb :add
   end
