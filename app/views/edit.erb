@@ -1,5 +1,5 @@
 <div id="admin_title"><h2>Edit <%= @album.album_title %></h2></div>
-	<form method="post" action="/album/<%= @album.id %>/edit">
+	<form method="post" action="/album/<%= @album.url %>/edit">
 		<p><label for="album_title">Album title </label><input type="text" name="album_title" value="<%= h @album.album_title %>" size="70"></p>
 		<p><label for="album_cover">Album cover link: </label><input type="url" name="album_cover" value="<%= h @album.album_cover %>" size="70"></p>
 		<p><label for="album_review">Album review: </label><textarea rows="15" cols="70" name="album_review"><%= h @album.album_review %></textarea></p>
@@ -15,11 +15,11 @@
 		<p><input type="submit" value="Submit"></p>
 	</form>
 	<hr>
-	<form method="post" action="/album/<%= @album.id %>/found">
+	<form method="post" action="/album/<%= @album.url %>/found">
 	<input type="text" name="found" placeholder="Type FOUND and submit to mark this album as found." size="46">
 	<input type="submit" value="Submit">
 	<hr>
-	<form method="post" action="/album/<%= @album.id %>/delete">
+	<form method="post" action="/album/<%= @album.url %>/delete">
 	<input type="text" name="delete" placeholder="Type DELETE and submit to delete this album." size="46">
 	<input type="submit" value="Submit">
 	</form>

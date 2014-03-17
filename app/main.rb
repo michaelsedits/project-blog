@@ -53,7 +53,7 @@ class Blog < Sinatra::Base
     @city = (params[:city]).capitalize
     @title = "Sounds in #{@city}"
     
-    @albums = Post.where("found = ?", 'f').where("city = ?", (params[:city]).capitalize).order("created_at DESC").limit(9)
+    @albums = Post.where("found = ?", 'f').where("city = ?", params[:city]).order("created_at DESC").limit(9)
     erb :home
   end
   
@@ -72,7 +72,7 @@ class Blog < Sinatra::Base
   get "/album/:url" do
     @album = Post.find_by_url(params[:url])
     @title = "#{@album.album_title}"
-    @album_city = Post.where("found = ?", 'f').where("city = ?", @album.city)
+    @album_city = Post.where("found = ?", 'f').where("city = ?", @album.city).where("id != ?", @album.id)
     
     erb :album
   end
@@ -86,7 +86,6 @@ class Blog < Sinatra::Base
   end
   
   get "/add" do
-    protected!
     @title = "Add a new album"
     erb :add
   end
@@ -125,7 +124,7 @@ class Blog < Sinatra::Base
     
     album = Post.find_by_url(params[:url])
   
-    album.update_attributes({:album_title => album_title, :album_cover => album_cover, :album_review => album_review, :place_title => place_title, :place_description => place_description, :pinpoint_description => pinpoint_description, :rdio => rdio, :city => city, :hidden_place => hidden_place, :map => map, :pinpoint_map => pinpoint_map})
+    album.update_attributes({:album_title => album_title, :album_cover => album_cover, :album_review => album_review, :place_title => place_title, :place_description => place_description, :pinpoint_description => pinpoint_description, :rdio => rdio, :city => city.gsub(' ', '-').gsub(/[^\w-]/, '').downcase, :hidden_place => hidden_place, :map => map, :pinpoint_map => pinpoint_map})
     
     redirect to("/album/#{params[:url]}")
   end
